@@ -1,0 +1,114 @@
+import UIKit
+import Foundation
+
+
+
+//Optionals - can have 2 values nil or actual data (String, Int, Double, Bool)
+// Be careful using ! (Force Wrapping)
+// Must be 100% sure that is not nil
+var my_pet: String?
+//print(my_pet!) // gives an error
+var pet: String? = "Max"
+
+
+// To unwrap an optional
+// First we have to use Optional Binding
+if let myPet = pet { // if pet actually holds a value
+    print(myPet)
+}
+
+
+
+// variables
+var num: Int?   // we are declaring an integer called num
+var num2: Int = 2 // we are initializing an integer
+//print(num2)
+
+
+
+// Functions overloading can take in many different data type of parameters
+// Function overloading can also return different data types
+
+func multiplyByTwo(number: Double) -> Int{
+    var multiplyVar = number * 2
+    print(Int(multiplyVar))
+    return Int(round(multiplyVar))  //Cast a double to an int  6.999 -> 6
+    // Be careful casting a double to int as you can lose the accurate value
+    // A solution is to use round() function
+}
+
+func multiplyByTwo(number: Int) -> Double {
+    var multiplyVar = number * 2
+    print(Int(multiplyVar))
+    return Double(multiplyVar)  // Cast Integer to double  3 -> 3.0
+    
+}
+
+func multiplyByTwo(number: Float) -> Int {
+    var multiplyVar = number * 2
+    print(Int(multiplyVar))
+    return Int(round(multiplyVar))    // 1.901248190 -> 1
+    // Be careful casting a float to int as you can lose the accurate value
+    // A solution is to use round() function
+    
+}
+
+multiplyByTwo(number: 2.2309)
+multiplyByTwo(number: 3.145)
+multiplyByTwo(number: 4.891)
+
+
+
+// change the variable outside the scope of the function
+func divideByTwo(number: inout Int) {
+    number = number / 2
+}
+
+
+var myNumber = 41
+
+//divide(number: myNumber)  // passed by value (copy)
+divideByTwo(number: &myNumber) // passing the reference (location of the variable)
+
+
+// number: Int
+
+// Funtion that return an array of odd numbers
+// Must take in parameter of array of Integers
+
+func isOdd(number: [Int]) -> [Int] {
+    var oddArray: [Int] = []
+    for i in number {
+        if i % 2 == 1 {  // if we find an odd number
+            print("\(i) is odd number")
+            oddArray.append(i)
+        }
+    }
+    return oddArray
+}
+
+var oddNumbers = isOdd(number: [2,10,-88,3,21,99,66])
+print(oddNumbers)
+ 
+ 
+ // Create an array of Any
+ var arr: [Any] = ["Hello", 2, true, 3.1415]
+ print(arr)
+
+// Loop through the index and element of an array of Any
+ for (index, value) in arr.enumerated() {
+     print("Index at \(index) Value \(value)")
+ }
+
+
+ // Java
+ // Object arr = new ArrayList<Object>()
+ // <> Generic Collections
+// Remember Generic Collections must be the same data type
+
+// Another method of creating an array in Swift
+ var arr2 = Array<Int>()
+ arr2.append(2)
+// arr2.append(3.14) // gives an error because it has a double data type instead of int
+
+
